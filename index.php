@@ -3,9 +3,10 @@
 
 require_once 'Bicycle.php';
 require_once 'Car.php';
+require_once 'Truck.php';
 
-$bike = new Bicycle("blue");
-$bike->setCurrentSpeed( 0);
+$bike = new Bicycle("blue", 1);
+$bike->forward();
 var_dump($bike);
 
 
@@ -17,17 +18,30 @@ echo '<br> Vitesse du vélo : ' . $bike->getCurrentSpeed() . ' km/h' . '<br>';
 echo $bike->brake();
 
 // Instanciation d'un nouvel objet $rockrider
-$rockrider = new Bicycle('yellow');
+$rockrider = new Bicycle('yellow', 1);
 
 
 // Instanciation d'un nouvel objet $tornado
-$tornado = new Bicycle('black');
+$tornado = new Bicycle('black', 1);
 $tornado->forward();
 
 // instanciation d'une nouvelle voiture
-$car = new Car('blue', 7, 'electric');
-var_dump($car);
-echo $car->start();
+$car = new Car('green', 4, 'electric');
 echo $car->forward();
 var_dump($car);
-echo $car->brake();
+echo '<br>';
+var_dump(Car::ALLOWED_ENERGIES);
+
+//instanciation d'un nouveau camion
+$truckScania = new Truck('white', 2, 'fuel', 300);
+$truckScania->setTruckLoad(200);
+$truckScania->setCapacityLevel();
+echo 'Etat du chargement du camion: '. $truckScania->getCapacityLevel(). " cf. chargement : ".$truckScania->getTruckLoad()." / capacité: ".$truckScania->getStorageCapacity();
+echo '<br>';
+$truckScania->forward();
+$truckScania->brake();
+$truckScania->setTruckLoad(100);
+echo 'Etat du chargement du camion: '. $truckScania->getCapacityLevel(). " cf. chargement : ".$truckScania->getTruckLoad()." / capacité: ".$truckScania->getStorageCapacity();
+echo '<br>';
+var_dump($truckScania);
+
