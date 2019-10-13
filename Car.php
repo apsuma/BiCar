@@ -1,63 +1,52 @@
 <?php
 // car.php
+require_once 'Vehicule.php';
 
-class Car
+class Car extends Vehicule
 {
-//attributs
+    const ALLOWED_ENERGIES = [
+        'fuel',
+        'electric',
+    ];
 
-    private $nbWheels = 4;
-    private $currentSpeed;
-    private $color;
-    private $nbSeats;
+    //attributs
+
+    /**
+     * @var string
+     */
     private $energy;
+
+    /**
+     * @var int
+     */
     private $energyLevel;
 
 //methodes
 
-    public function __construct(string $color, int $nbSeats, string $energy) {
-        $this->color = $color;
-        $this->nbSeats = $nbSeats;
-        $this->energy = $energy;
-    }
-
-    public function forward() {
-        $this->currentSpeed = 70;
-
-        return "Vroooouuuuuuuuuum !";
-    }
-
-    public function brake() {
-        $sentence = "";
-        while ($this->currentSpeed > 0) {
-            $this->currentSpeed--;
-            $sentence .= "Brake !!!";
-        }
-        $sentence .= "I'm stopped !";
-        return $sentence;
-    }
-
-    public function start() {
-        $action = "Go !";
-        return $action;
-    }
-
-    public function getNbWheels():integer {
-        return $this->nbWheels;
-    }
-
-    public function getColor(): string {
-        return $this->color;
-    }
-
-    public function getNbSeats(): integer {
-        return $this->nbSeats;
+    public function __construct(string $color, int $nbSeats, string $energy)
+    {
+        parent::__construct($color, $nbSeats);
+        $this->setEnergy($energy);
     }
 
     public function getEnergy(): string {
         return $this->energy;
     }
 
-    public function getEnergyLevel(): integer {
+    public function setEnergy(string $energy): Car
+    {
+        if (in_array($energy, self::ALLOWED_ENERGIES)) {
+            $this->energy = $energy;
+        }
+        return $this;
+    }
+
+    public function getEnergyLevel(): int {
         return $this->energyLevel;
+    }
+
+    public function setEnergyLevel(int $energyLevel): void
+    {
+        $this->energyLevel = $energyLevel;
     }
 }
