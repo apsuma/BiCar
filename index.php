@@ -4,6 +4,9 @@
 require_once 'Bicycle.php';
 require_once 'Car.php';
 require_once 'Truck.php';
+require_once 'MotorWay.php';
+require_once 'PedestrianWay.php';
+require_once 'ResidentialWay.php';
 
 $bike = new Bicycle("blue", 1);
 $bike->forward();
@@ -44,4 +47,15 @@ $truckScania->setTruckLoad(100);
 echo 'Etat du chargement du camion: '. $truckScania->getCapacityLevel(). " cf. chargement : ".$truckScania->getTruckLoad()." / capacité: ".$truckScania->getStorageCapacity();
 echo '<br>';
 var_dump($truckScania);
+
+$residentialWay3 = new ResidentialWay();
+var_dump($residentialWay3);
+$motorWay1 = new MotorWay();
+var_dump($motorWay1);
+$pedestrianWay2 = new PedestrianWay();
+var_dump($pedestrianWay2);
+$motorWay1->addVehicule($truckScania);
+$motorWay1->addVehicule($car);
+var_dump($motorWay1);
+
 
