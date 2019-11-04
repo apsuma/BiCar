@@ -59,3 +59,5 @@ $motorWay1->addVehicule($car);
 var_dump($motorWay1);
 
 
+$tornado->switchOn();
+$car->switchOff();
