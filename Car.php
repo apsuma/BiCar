@@ -22,6 +22,11 @@ class Car extends Vehicule implements LightableInterface
      */
     private $energyLevel;
 
+    /**
+     * @var bool
+     */
+    private $hasParkBrake = true;
+
 //methodes
 
     public function __construct(string $color, int $nbSeats, string $energy)
@@ -59,5 +64,17 @@ class Car extends Vehicule implements LightableInterface
     public function switchOff(): bool
     {
         return false;
+    }
+
+    public function setParkBrake(bool $go): void
+    {
+        $this->hasParkBrake = $go;
+    }
+
+    public function start():void
+    {
+        if ($this->hasParkBrake) {
+            throw new Exception("frein à main activé");
+        }
     }
 }

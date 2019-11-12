@@ -61,3 +61,17 @@ var_dump($motorWay1);
 
 $tornado->switchOn();
 $car->switchOff();
+
+$HomerCar = new Car('orange', 2, 'fuel');
+var_dump($HomerCar);
+try {
+    $HomerCar->start();
+} catch (Exception $e) {
+    echo "Exception received : ". $e->getMessage();
+    echo "<br/>";
+    $HomerCar->setParkBrake(false);
+} finally {
+    echo "Ma voiture roule comme un donut";
+}
+
+var_dump($HomerCar);
