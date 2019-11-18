@@ -7,6 +7,7 @@ require_once 'Truck.php';
 require_once 'MotorWay.php';
 require_once 'PedestrianWay.php';
 require_once 'ResidentialWay.php';
+require_once 'Speedometer.php';
 
 $bike = new Bicycle("blue", 1);
 $bike->forward();
@@ -75,3 +76,7 @@ try {
 }
 
 var_dump($HomerCar);
+
+echo Speedometer::convertKmToMiles(10);
+echo "<br/>";
+echo Speedometer::convertMilesToKm(30);
