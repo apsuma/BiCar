@@ -3,13 +3,16 @@
 
 class Speedometer
 {
+    public static $kmToMiles = 0.621371;
+    public static $milesToKm = 1.60934;
+
     public static function convertKmToMiles(int $km) : float
     {
-        return $km * 0.621371;
+        return $km * Speedometer::$kmToMiles;
     }
 
     public static function convertMilesToKm($miles) : float
     {
-        return $miles * 1.60934;
+        return $miles * Speedometer::$milesToKm;
     }
 }
